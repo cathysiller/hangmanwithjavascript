@@ -1,2 +1,1 @@
-# hangmanjs
 # hangmanwithjavascript
