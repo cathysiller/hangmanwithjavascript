@@ -1,9 +1,9 @@
 /* Variabes */
 /* Mixin's */
 body {
-  background: black;
+  background: #FFFFFF;
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-  color: #fff;
+  color: #000000;
   height: 100%;
   text-align: center;
   font-size: 18px;
@@ -20,8 +20,8 @@ body {
 }
 
 canvas {
-  color: #fff;
-  border: #fff dashed 2px;
+  color: #000000;
+  border: #000000 dashed 2px;
   padding: 15px;
 }
 
@@ -69,11 +69,11 @@ p {
   -webkit-border-radius: 5px;
   border-radius: 5px;
   -khtml-border-radius: 5px;
-  border: solid 1px #fff;
+  border: solid 1px #c1d72e;
 }
 #alphabet li:hover {
   background: #c1d72e;
-  border: solid 1px #fff;
+  border: solid 1px #000000;
   color: #fff;
 }
 

@@ -8,10 +8,10 @@ window.onload = function () {
   var chosenCategory;     // Selected catagory
   var getHint ;          // Word getHint
   var word ;              // Selected word
-  var guess ;             // Geuss
-  var geusses = [ ];      // Stored geusses
+  var guess ;             // Guess
+  var guesses = [ ];      // Stored guesses
   var lives ;             // Lives
-  var counter ;           // Count correct geusses
+  var counter ;           // Count correct guesses
   var space;              // Number of spaces in word '-'
 
   // Get elements
@@ -20,9 +20,7 @@ window.onload = function () {
   var getHint = document.getElementById("hint");
   var showClue = document.getElementById("clue");
 
-
-
-  // create alphabet ul
+  // Alphabet List
   var buttons = function () {
     myButtons = document.getElementById('buttons');
     letters = document.createElement('ul');
@@ -38,8 +36,7 @@ window.onload = function () {
     }
   }
 
-
-  // Select Catagory
+  // Select Category
   var selectCat = function () {
     if (chosenCategory === categories[0]) {
       catagoryName.innerHTML = "The Chosen Category Is Famous Cats";
@@ -50,7 +47,7 @@ window.onload = function () {
     }
   }
 
-  // Create geusses ul
+  // Guesses List
    result = function () {
     wordHolder = document.getElementById('hold');
     correct = document.createElement('ul');
@@ -66,39 +63,37 @@ window.onload = function () {
         guess.innerHTML = "_";
       }
 
-      geusses.push(guess);
+      guesses.push(guess);
       wordHolder.appendChild(correct);
       correct.appendChild(guess);
     }
   }
 
-  // Show lives
+  // Show Lives
    comments = function () {
     showLives.innerHTML = "You have " + lives + " lives";
     if (lives < 1) {
       showLives.innerHTML = "Game Over";
     }
-    for (var i = 0; i < geusses.length; i++) {
-      if (counter + space === geusses.length) {
+    for (var i = 0; i < guesses.length; i++) {
+      if (counter + space === guesses.length) {
         showLives.innerHTML = "You Win!";
       }
     }
   }
 
-      // Animate man
+  // Animate Hangman
   var animate = function () {
     var drawMe = lives ;
     drawArray[drawMe]();
   }
 
-
    // Hangman
   canvas =  function(){
-
     myStickman = document.getElementById("stickman");
     context = myStickman.getContext('2d');
     context.beginPath();
-    context.strokeStyle = "#fff";
+    context.strokeStyle = "#000000";
     context.lineWidth = 2;
   };
 
@@ -111,7 +106,6 @@ window.onload = function () {
     }
 
   draw = function($pathFromx, $pathFromy, $pathTox, $pathToy) {
-
     context.moveTo($pathFromx, $pathFromy);
     context.lineTo($pathTox, $pathToy);
     context.stroke();
@@ -159,16 +153,16 @@ window.onload = function () {
   // OnClick Function
    check = function () {
     list.onclick = function () {
-      var geuss = (this.innerHTML);
+      var guess = (this.innerHTML);
       this.setAttribute("class", "active");
       this.onclick = null;
       for (var i = 0; i < word.length; i++) {
-        if (word[i] === geuss) {
-          geusses[i].innerHTML = geuss;
+        if (word[i] === guess) {
+          guesses[i].innerHTML = guess;
           counter += 1;
         }
       }
-      var j = (word.indexOf(geuss));
+      var j = (word.indexOf(guess));
       if (j === -1) {
         lives -= 1;
         comments();
@@ -180,7 +174,7 @@ window.onload = function () {
   }
 
 
-  // Play
+  // Categories to Choose From
   play = function () {
     categories = [
         ["pusheen", "garfield", "grumpy-cat", "cheshire-cat", "pink-panther", "felix-the-cat", "hello-kitty"],
@@ -194,7 +188,7 @@ window.onload = function () {
     console.log(word);
     buttons();
 
-    geusses = [ ];
+    guesses = [ ];
     lives = 10;
     counter = 0;
     space = 0;
@@ -206,10 +200,8 @@ window.onload = function () {
 
   play();
 
-  // Hint
-
+  // Hints
     hint.onclick = function() {
-
       hints = [
         ["chubby and cute", "odie", "small and real-life", "alice", "pink", "silent film", "japanese"],
         ["Billy Crystal", "Julia Roberts", "Audrey Hepburn", "Prince Humperdinck", "Robbie Hart"],
